@@ -115,12 +115,19 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
                 <!-- todo from -->
-                <div class="add-control">
-                    <div class="form-group has-feedback">
-                        <input type="text" class="form-control" placeholder="✍️ Add item..." />
-                        <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i>
+                <form action="/form-info" method="POST">
+
+                    <div class="add-control">
+                        <div class="form-group has-feedback">
+                            <input type="text" name="todo_title" class="form-control" placeholder="✍️ Add item..." />
+                            <button style="padding: 0; border: 0;" class="form-control-feedback add-btn">
+
+                                <i class="fa fa-plus " title="Add item"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
+
+                </form>
 
 
                 <!-- todo warning -->
@@ -133,20 +140,21 @@
                 </p>
                 <!-- todo list -->
                 <ul class="todo-list ui-sortable">
+                    <% todo_list.forEach(element => { %>
+
                     <li class="">
                         <div class="checkbox">
                             <span class="close">
                                 <i class="fa fa-times"></i>
                             </span>
                             <label>
-                                <span class="checkbox-mask">
-    
-                                </span>
+                                <span class="checkbox-mask"></span>
                                 <input type="checkbox">
-                                This site uses 🍪to keep track of your tasks
+                                <%= element.title %>
                             </label>
                         </div>
                     </li>
+                    <% }) %>
                 </ul>
             </div>
         </div>

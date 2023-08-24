@@ -1,4 +1,4 @@
-git init
-git commit -m "frontend setup"
+git add .
+git commit -m "save data to json and retrive data"
 git push -u origin main
 
