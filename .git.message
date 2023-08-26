@@ -1,4 +1,4 @@
 git add .
-git commit -m "update & edit complete"
+git commit -m "delete  complete"
 git push -u origin main
 

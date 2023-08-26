@@ -46,6 +46,23 @@ server.get('/edit/:index', (req, res, next) => {
     }
     
 })
+server.get('/delete/:index',(req,res)=>{
+    const filePath = './database/todo.json';
+    let todo_list = read_json(filePath);
+    let item = todo_list[req.params.index];
+    if(item){
+        todo_list.splice(req.params.index,1);
+        write_json(filePath, todo_list);
+        return res.redirect('/')
+    }
+    else{
+        res.send('not deleted')
+    }
+    console.log(todo_list);
+
+
+
+})
 server.post('/update-form-info',(req,res)=>{
     const filePath = './database/todo.json';
     let todo_list = read_json(filePath);
@@ -60,7 +77,6 @@ server.post('/update-form-info',(req,res)=>{
     else{
         res.send('todo list not updated');
     }
-    console.log(todo_list);
 })
 
 server.post('/form-info', (req, res, next) => {
