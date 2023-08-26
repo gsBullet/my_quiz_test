@@ -1,0 +1,51 @@
+<html>
+
+<%- include('./layouts/header') %>
+
+<body class="body">
+
+    <div class="container">
+
+        <div class="today"></div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
+                <!-- todo from -->
+                <form action="/update-form-info" method="POST">
+
+                    <div class="add-control">
+                        <div style="margin-bottom:25px;">
+                            <input  type="text" value="<%= index %>" type="text" name="index">
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="text" value="<%= todo.title %>" name="todo_title" class="form-control" placeholder="✍️ edit item..." />
+                            <button style="padding: 0; border: 0;" class="form-control-feedback edit-btn">
+
+                                <i class="fa fa-plus " title="edit item"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+                <!-- todo warning -->
+                <p class="err text-danger text-center hidden">
+                    <i class="fa fa-warning"></i>
+                    Oops! Please, enter nameitem
+                </p>
+                <p class="no-items text-muted text-center hidden">
+                    <i class="fa fa-ban"></i>
+                </p>
+                <!-- todo list -->
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+<%- include('./layouts/footer') %>
+
+</html>

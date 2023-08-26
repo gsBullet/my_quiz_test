@@ -1,4 +1,4 @@
 git add .
-git commit -m "update README file"
+git commit -m "update & edit complete"
 git push -u origin main
 
