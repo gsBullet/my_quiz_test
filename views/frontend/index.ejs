@@ -43,13 +43,16 @@
                                 </a>
                             </span>
                             <span class="close">
-                                <a href="./delete/<%= index %>">
+                                <a onclick="return confirm('Do Your want to delete now')" href="./delete/<%= index %>">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </span>
                             <label>
                                 <span class="checkbox-mask"></span>
-                                <input type="checkbox">
+                                <input 
+                                <%= element.is_position?'checked':'' %>
+                                onchange="location.href=`/complete-form-info/<%= index %>`" 
+                                type="checkbox">
                                 <%= element.title %>
                             </label>
                         </div>

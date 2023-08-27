@@ -67,7 +67,7 @@ server.post('/update-form-info',(req,res)=>{
     const filePath = './database/todo.json';
     let todo_list = read_json(filePath);
     let item = todo_list[req.body.index];
-    console.log(item);
+
     if(item){
         item.title= req.body.todo_title;
         write_json(filePath, todo_list);
@@ -76,6 +76,21 @@ server.post('/update-form-info',(req,res)=>{
     }
     else{
         res.send('todo list not updated');
+    }
+})
+server.get('/complete-form-info/:index',(req,res)=>{
+
+    const filePath = './database/todo.json';
+    let todo_list = read_json(filePath);
+    let item = todo_list[req.params.index];
+    console.log(item);
+    if(item){
+        item.is_position= item.is_position ? 0: 1;
+        write_json(filePath, todo_list);
+        return res.redirect('/');
+    }
+    else{
+        res.send('404 data is not found');
     }
 })
 
@@ -91,11 +106,11 @@ server.post('/form-info', (req, res, next) => {
         is_position: 0
     });
     write_json(filePath, todo_list);
+    res.redirect('/');
 
     // console.log(todo_list);
     // res.send(JSON.stringify(todo_list));
     // res.status(200).json(todo_list);
-    res.redirect('/');
 
 
 })
